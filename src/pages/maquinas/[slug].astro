@@ -27,6 +27,17 @@ const jsonLd = {
   brand: { '@type': 'Brand', name: 'Brasil DTF' },
   description: machine.tagline,
   image: new URL(machine.image.src, site).toString(),
+  ...(machine.price
+    ? {
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'BRL',
+          price: machine.price.current,
+          availability: 'https://schema.org/InStock',
+          url: new URL(`/maquinas/${machine.slug}`, site).toString(),
+        },
+      }
+    : {}),
 };
 
 const vcData = {

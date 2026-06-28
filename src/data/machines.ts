@@ -44,6 +44,22 @@ export interface MachineSpec {
   value: string;
 }
 
+export interface MachinePrice {
+  /** Preço de venda atual, em reais (BRL), como número (ex.: 14980 = R$ 14.980). */
+  current: number;
+  /** Preço "de" (riscado) quando há promoção. Omitir se não houver. */
+  original?: number;
+}
+
+/** Formata um valor em reais no padrão pt-BR: 14980 → "R$ 14.980". */
+const _brl = new Intl.NumberFormat('pt-BR', {
+  style: 'currency',
+  currency: 'BRL',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 2,
+});
+export const formatBRL = (value: number): string => _brl.format(value);
+
 export interface Machine {
   slug: string;
   name: string;
@@ -56,6 +72,8 @@ export interface Machine {
   heads: string;
   width: string;
   topSpeed: string | null;
+  /** Preço de venda em R$. Opcional: máquina sem preço definido não exibe valor. */
+  price?: MachinePrice;
   highlights: string[];
   specs: MachineSpec[];
   whatsappMessage: string;
@@ -80,6 +98,7 @@ export const machines: Machine[] = [
     heads: '1× Epson XP600',
     width: 'A3 (~32 cm)',
     topSpeed: null,
+    price: { current: 14980, original: 16980 },
     highlights: [
       'Kit turnkey: forno de poliamida e mesa a vácuo inclusos — pronto pra produzir no dia 1.',
       'Acompanha tintas (100 ml por cor), 30 folhas de filme A3, 200 g de pó de poliamida e o RIP Acrorip 11.2.',
@@ -113,6 +132,7 @@ export const machines: Machine[] = [
     heads: '2× Epson F1080-A1',
     width: '40 cm (16,5")',
     topSpeed: '3,5 m²/h',
+    price: { current: 54900, original: 63900 },
     highlights: [
       'Impressão, aplicação de pó e cura integradas — solução all-in-one num corpo compacto.',
       'Circulação de tinta branca: menos entupimento, menos manutenção.',
@@ -148,6 +168,7 @@ export const machines: Machine[] = [
     heads: '2× Epson i3200-A1',
     width: '60 cm (24")',
     topSpeed: '8 m²/h',
+    price: { current: 79900, original: 89900 },
     highlights: [
       'Cabeça dupla i3200-A1 com circulação automática de tinta branca.',
       'Agitador de pó integrado com take-up por sensor.',
@@ -182,6 +203,7 @@ export const machines: Machine[] = [
     heads: '2× Epson i3200-A1',
     width: '60 cm (24")',
     topSpeed: '10 m²/h',
+    price: { current: 79900, original: 89900 },
     highlights: [
       'Até 10 m²/h com branco estável — feita para produção contínua.',
       'Levantamento elétrico do rolo de pressão para ajuste fino.',

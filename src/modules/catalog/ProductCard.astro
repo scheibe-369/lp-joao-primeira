@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { lineLabel, type Machine } from '../../data/machines';
+import { lineLabel, formatBRL, type Machine } from '../../data/machines';
 import { whatsappUrl } from '../../lib/whatsapp';
 import Badge from '../../components/ui/Badge.astro';
 import Icon from '../../components/ui/Icon.astro';
@@ -61,6 +61,21 @@ const detailUrl = `/maquinas/${machine.slug}`;
         ))
       }
     </dl>
+
+    {
+      machine.price && (
+        <div class="mt-4">
+          {machine.price.original && (
+            <span class="text-sm text-muted line-through">
+              {formatBRL(machine.price.original)}
+            </span>
+          )}
+          <p class="font-display text-3xl leading-none text-accent">
+            {formatBRL(machine.price.current)}
+          </p>
+        </div>
+      )
+    }
 
     <div class="mt-5 flex items-center gap-2 pt-1">
       <a

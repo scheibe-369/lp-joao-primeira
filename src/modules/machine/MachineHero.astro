@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { lineLabel, type Machine } from '../../data/machines';
+import { lineLabel, formatBRL, type Machine } from '../../data/machines';
 import Container from '../../components/ui/Container.astro';
 import Badge from '../../components/ui/Badge.astro';
 import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
@@ -98,6 +98,20 @@ const stats = [
         </dl>
 
         <div class="mt-8">
+          {
+            machine.price && (
+              <div class="mb-6">
+                {machine.price.original && (
+                  <span class="text-base text-muted line-through">
+                    {formatBRL(machine.price.original)}
+                  </span>
+                )}
+                <p class="font-display text-4xl leading-none text-accent sm:text-5xl">
+                  {formatBRL(machine.price.current)}
+                </p>
+              </div>
+            )
+          }
           <WhatsAppButton
             label="Falar no WhatsApp"
             size="lg"

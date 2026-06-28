@@ -35,3 +35,7 @@ lighthouse*.json
 /home-*.jpeg
 /detail-*.jpeg
 og-gen.mjs
+_*.mjs
+
+# exportação de imagens dos cards (cópias dos assets, p/ uso de marketing — não versionar)
+imagens-cards-maquinas/
