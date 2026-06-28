@@ -1,0 +1,43 @@
+---
+import Container from '../../components/ui/Container.astro';
+import Icon from '../../components/ui/Icon.astro';
+
+const items = [
+  {
+    icon: 'shirt',
+    title: 'Estampe qualquer tecido',
+    text: 'Algodão, poliéster, nylon, jeans e malhas — cores vivas e toque leve.',
+  },
+  {
+    icon: 'coins',
+    title: 'Baixo custo, alta margem',
+    text: 'Custo baixo por estampa e ótima margem por peça vendida.',
+  },
+  {
+    icon: 'rocket',
+    title: 'Comece em casa e escale',
+    text: 'Da bancada A3 até a produção industrial, no seu ritmo.',
+  },
+] as const;
+---
+
+<section class="border-y border-white/10 bg-navy py-12 sm:py-14">
+  <Container>
+    <h2 class="sr-only">Por que escolher DTF</h2>
+    <ul class="grid gap-8 sm:grid-cols-3">
+      {
+        items.map((it, i) => (
+          <li class="flex items-start gap-4" data-reveal data-reveal-delay={i * 80}>
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-inset ring-accent/25">
+              <Icon name={it.icon} size={22} />
+            </span>
+            <div>
+              <h3 class="font-display text-xl text-white">{it.title}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-muted">{it.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</section>

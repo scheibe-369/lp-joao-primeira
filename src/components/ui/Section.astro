@@ -1,0 +1,17 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  bg?: 'base' | 'deep' | 'surface';
+  contain?: boolean; // content-visibility:auto p/ seções abaixo da dobra
+}
+const { id, class: className = '', bg = 'base', contain = false } = Astro.props;
+const bgClass = bg === 'deep' ? 'bg-navy-deep' : bg === 'surface' ? 'bg-navy-surface' : 'bg-navy';
+---
+
+<section
+  id={id}
+  class={`py-16 sm:py-20 lg:py-24 ${bgClass} ${contain ? 'cv-auto' : ''} ${className}`}
+>
+  <slot />
+</section>

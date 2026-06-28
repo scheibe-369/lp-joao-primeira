@@ -1,0 +1,17 @@
+---
+interface Props {
+  class?: string;
+  variant?: 'soft' | 'solid';
+}
+const { class: className = '', variant = 'soft' } = Astro.props;
+const base =
+  'inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-[11px] font-semibold uppercase tracking-eyebrow leading-none';
+const variantClass =
+  variant === 'solid'
+    ? 'bg-accent text-accent-ink'
+    : 'bg-accent/15 text-accent ring-1 ring-inset ring-accent/25';
+---
+
+<span class={`${base} ${variantClass} ${className}`}>
+  <slot />
+</span>

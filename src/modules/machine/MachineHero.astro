@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import { lineLabel, type Machine } from '../../data/machines';
+import Container from '../../components/ui/Container.astro';
+import Badge from '../../components/ui/Badge.astro';
+import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
+import Icon from '../../components/ui/Icon.astro';
+
+interface Props {
+  machine: Machine;
+}
+const { machine } = Astro.props;
+
+const images = [machine.image, ...(machine.gallery ?? [])];
+const stats = [
+  { label: 'Cabeças', value: machine.heads },
+  { label: 'Largura', value: machine.width },
+  ...(machine.topSpeed ? [{ label: 'Velocidade', value: machine.topSpeed }] : []),
+];
+---
+
+<section class="bg-navy pb-12 pt-8 sm:pb-16 sm:pt-10">
+  <Container>
+    <a
+      href="/#catalogo"
+      class="inline-flex items-center gap-1.5 text-sm font-semibold text-muted transition-colors hover:text-white"
+    >
+      <Icon name="arrow-left" size={16} /> Voltar ao catálogo
+    </a>
+
+    <div class="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-12">
+      <div>
+        <div class="rounded-2xl bg-white p-5 sm:p-8">
+          {
+            images.length > 1 ? (
+              <div class="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-1">
+                {images.map((im, i) => (
+                  <div class="w-full shrink-0 snap-center">
+                    <Image
+                      src={im}
+                      alt={`${machine.name} — imagem ${i + 1}`}
+                      widths={[480, 720, 960]}
+                      sizes="(min-width: 1024px) 45vw, 90vw"
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      fetchpriority={i === 0 ? 'high' : undefined}
+                      class="aspect-[4/3] w-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <Image
+                src={machine.image}
+                alt={machine.name}
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 45vw, 90vw"
+                loading="eager"
+                fetchpriority="high"
+                class="aspect-[4/3] w-full object-contain"
+              />
+            )
+          }
+        </div>
+        {
+          images.length > 1 && (
+            <p class="mt-2 text-center text-xs text-muted">Arraste para ver mais imagens →</p>
+          )
+        }
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2">
+          <Badge>{machine.badge}</Badge>
+          <span class="text-[11px] font-semibold uppercase tracking-eyebrow text-muted"
+            >{lineLabel[machine.line]}</span
+          >
+        </div>
+        <h1
+          class="font-display mt-4 text-[clamp(2.25rem,6vw,4rem)] leading-[0.95] [overflow-wrap:anywhere]"
+        >
+          {machine.shortName}
+        </h1>
+        <p class="mt-3 text-lg text-muted">{machine.tagline}</p>
+        <p class="mt-4 text-sm text-muted">
+          <span class="font-semibold text-white/80">Ideal para:</span>
+          {machine.target}
+        </p>
+
+        <dl class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {
+            stats.map((s) => (
+              <div class="rounded-xl border border-white/10 bg-navy-surface p-3">
+                <dt class="text-[11px] uppercase tracking-eyebrow text-muted">{s.label}</dt>
+                <dd class="mt-1 font-display text-lg leading-none text-white">{s.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <div class="mt-8">
+          <WhatsAppButton
+            label="Falar no WhatsApp"
+            size="lg"
+            message={machine.whatsappMessage}
+            contentName={machine.name}
+            contentCategory={machine.line}
+            contentId={machine.slug}
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

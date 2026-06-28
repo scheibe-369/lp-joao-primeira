@@ -1,0 +1,52 @@
+---
+// Primitivo agnóstico. Renderiza <a> se houver href, senão <button>.
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'md' | 'lg';
+  class?: string;
+  type?: 'button' | 'submit';
+  target?: string;
+  rel?: string;
+  id?: string;
+  block?: boolean;
+  'aria-label'?: string;
+}
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+  type = 'button',
+  target,
+  rel,
+  id,
+  block = false,
+  'aria-label': ariaLabel,
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-full font-semibold leading-none transition-transform duration-200 ease-out hover:scale-[1.02] focus-visible:scale-[1.02] disabled:opacity-50';
+const sizes = {
+  md: 'min-h-[44px] px-5 py-3 text-sm',
+  lg: 'min-h-[52px] px-7 py-4 text-base',
+};
+const variants = {
+  primary: 'bg-accent text-accent-ink hover:brightness-95',
+  secondary: 'border border-white/30 text-white hover:bg-white/5 hover:border-white/50',
+  ghost: 'text-white hover:bg-white/5',
+};
+const cls = `${base} ${sizes[size]} ${variants[variant]} ${block ? 'w-full' : ''} ${className}`;
+---
+
+{
+  href ? (
+    <a href={href} class={cls} target={target} rel={rel} id={id} aria-label={ariaLabel}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={cls} id={id} aria-label={ariaLabel}>
+      <slot />
+    </button>
+  )
+}

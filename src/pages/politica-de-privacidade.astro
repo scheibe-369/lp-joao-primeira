@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+
+const title = 'Política de Privacidade | Brasil DTF';
+const description =
+  'Como a Brasil DTF trata seus dados e usa cookies do Meta (Pixel) para mensuração de anúncios, conforme a LGPD.';
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="bg-navy py-14 sm:py-20">
+    <Container class="max-w-3xl">
+      <h1 class="font-display text-[clamp(2rem,6vw,3.5rem)] leading-none">Política de Privacidade</h1>
+      <p class="mt-4 text-sm text-muted">Última atualização: junho de 2026.</p>
+
+      <div class="prose-dtf mt-8 space-y-6 text-muted">
+        <div>
+          <h2 class="font-display text-2xl text-white">1. Quem somos</h2>
+          <p class="mt-2 leading-relaxed">
+            Esta página é operada pela <strong class="text-white">Brasil DTF</strong> (CNPJ
+            39.497.418/0001-91), responsável pelo tratamento dos dados aqui descritos (controlador),
+            nos termos da Lei Geral de Proteção de Dados — LGPD (Lei nº 13.709/2018).
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl text-white">2. Quais dados coletamos</h2>
+          <p class="mt-2 leading-relaxed">
+            Esta é uma página estática e <strong class="text-white">não possui formulários</strong>.
+            Quando você <strong class="text-white">aceita os cookies</strong>, carregamos o
+            <strong class="text-white">Meta Pixel</strong>, que coleta dados de navegação por meio de
+            cookies (como o <code>_fbp</code>), seu endereço IP e eventos de interação (visita de
+            página, visualização de produto e cliques para o WhatsApp). Não coletamos nome, CPF,
+            e-mail ou telefone por esta página.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl text-white">3. Para que usamos</h2>
+          <p class="mt-2 leading-relaxed">
+            Os dados do Pixel são usados exclusivamente para <strong class="text-white">mensurar e
+            otimizar nossos anúncios</strong> nas plataformas da Meta (Facebook e Instagram).
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl text-white">4. Compartilhamento</h2>
+          <p class="mt-2 leading-relaxed">
+            Os dados coletados pelo Pixel são compartilhados com a
+            <strong class="text-white">Meta Platforms, Inc.</strong>, conforme as políticas da Meta.
+            Não vendemos seus dados.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl text-white">5. Base legal</h2>
+          <p class="mt-2 leading-relaxed">
+            O tratamento via Pixel ocorre com base no seu
+            <strong class="text-white">consentimento</strong> (art. 7º, I, da LGPD), coletado pelo
+            banner de cookies. Enquanto você não aceitar, o Pixel não é carregado.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl text-white">6. Como recusar ou revogar</h2>
+          <p class="mt-2 leading-relaxed">
+            Você pode recusar no banner de cookies. Para revogar um consentimento já dado, limpe os
+            dados do site no seu navegador (o banner aparecerá novamente). Você também pode gerenciar
+            preferências de anúncios diretamente na sua conta da Meta.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl text-white">7. Seus direitos</h2>
+          <p class="mt-2 leading-relaxed">
+            Você pode solicitar confirmação, acesso, correção ou eliminação dos seus dados, entre
+            outros direitos previstos na LGPD, falando com a gente pelo WhatsApp.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl text-white">8. Contato</h2>
+          <p class="mt-2 leading-relaxed">
+            Dúvidas sobre privacidade? Fale com a Brasil DTF pelo
+            <a href="/" class="font-semibold text-accent hover:underline">WhatsApp</a> informado no site.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-10 text-xs text-muted">
+        Modelo informativo — recomenda-se revisão jurídica antes da publicação definitiva.
+      </p>
+    </Container>
+  </section>
+</BaseLayout>

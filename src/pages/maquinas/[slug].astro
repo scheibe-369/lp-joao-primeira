@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MachineHero from '../../modules/machine/MachineHero.astro';
+import MachineHighlights from '../../modules/machine/MachineHighlights.astro';
+import MachineSpecs from '../../modules/machine/MachineSpecs.astro';
+import ContactBand from '../../modules/contact/ContactBand.astro';
+import { machines, getMachine, lineLabel } from '../../data/machines';
+
+export function getStaticPaths() {
+  return machines.map((m) => ({ params: { slug: m.slug } }));
+}
+
+const { slug } = Astro.params;
+const machine = getMachine(slug as string)!;
+
+const site = Astro.site?.toString() ?? 'https://lp.brasildtf.com.br';
+const title = `${machine.name} | Brasil DTF`;
+const description = `${machine.tagline} ${machine.heads} · ${machine.width}${
+  machine.topSpeed ? ' · ' + machine.topSpeed : ''
+}. Suporte, treinamento e garantia. Fale no WhatsApp.`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: machine.name,
+  category: lineLabel[machine.line],
+  brand: { '@type': 'Brand', name: 'Brasil DTF' },
+  description: machine.tagline,
+  image: new URL(machine.image.src, site).toString(),
+};
+
+const vcData = {
+  content_name: machine.name,
+  content_category: machine.line,
+  content_ids: [machine.slug],
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <MachineHero machine={machine} />
+  <MachineHighlights machine={machine} />
+  <MachineSpecs machine={machine} />
+  <ContactBand
+    title="Quer essa máquina ou tem dúvidas?"
+    subtitle="Fale com a Brasil DTF no WhatsApp: a gente passa as condições, tira dúvidas técnicas e te ajuda a decidir."
+    message={machine.whatsappMessage}
+    contentName={machine.name}
+  />
+
+  <script type="application/json" id="vc-data" is:inline set:html={JSON.stringify(vcData)}></script>
+  <script is:inline>
+    (function () {
+      var el = document.getElementById('vc-data');
+      if (!el) return;
+      try {
+        var d = JSON.parse(el.textContent || '{}');
+        (window.bdtfTrack || function () {})('ViewContent', d);
+      } catch (e) {}
+    })();
+  </script>
+</BaseLayout>

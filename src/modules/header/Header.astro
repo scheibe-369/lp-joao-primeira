@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/brand/logo.png';
+import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
+---
+
+<header class="sticky top-0 z-40 border-b border-white/10 bg-navy/85 backdrop-blur-md">
+  <div
+    class="mx-auto flex h-16 max-w-content items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+  >
+    <a href="/" class="flex shrink-0 items-center" aria-label="Brasil DTF — página inicial">
+      <span class="inline-flex items-center rounded-lg bg-white px-2 py-1">
+        <Image
+          src={logo}
+          alt="Brasil DTF"
+          width={120}
+          height={80}
+          densities={[1, 2]}
+          loading="eager"
+          class="h-7 w-auto sm:h-8"
+        />
+      </span>
+    </a>
+    <nav class="flex items-center gap-4">
+      <a
+        href="/#catalogo"
+        class="hidden text-sm font-semibold text-muted transition-colors hover:text-white md:inline"
+        >Máquinas</a
+      >
+      <a
+        href="/#sobre"
+        class="hidden text-sm font-semibold text-muted transition-colors hover:text-white md:inline"
+        >Sobre</a
+      >
+      <WhatsAppButton
+        label="Falar no WhatsApp"
+        contentName="Header"
+        contentCategory="header"
+        class="hidden sm:inline-flex"
+      />
+      <WhatsAppButton label="WhatsApp" contentName="Header" contentCategory="header" class="sm:hidden" />
+    </nav>
+  </div>
+</header>

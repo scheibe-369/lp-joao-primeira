@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/machines/c605-h6502/hero.webp';
+import Container from '../../components/ui/Container.astro';
+import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+
+const trust = ['Garantia + treinamento', 'Suporte por WhatsApp', 'Insumos abertos'] as const;
+---
+
+<section class="relative overflow-hidden bg-navy">
+  <!-- glow de fundo (decorativo, navy -> sutil) -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -right-1/4 top-0 h-[120%] w-[80%] opacity-60"
+    style="background: radial-gradient(closest-side, rgba(254,191,2,0.10), transparent 70%);"
+  >
+  </div>
+
+  <Container
+    class="relative grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:py-24"
+  >
+    <div>
+      <p class="eyebrow">Impressoras DTF &amp; UV-DTF</p>
+      <h1
+        class="font-display mt-4 text-[clamp(2.5rem,8vw,5.25rem)] leading-[0.92] [overflow-wrap:anywhere]"
+      >
+        A máquina DTF certa pra você começar a <span class="metal-shine">faturar</span>
+      </h1>
+      <p class="mt-5 max-w-xl text-base text-muted sm:text-lg">
+        Da iniciante A3 à industrial de 5 cabeças — todas as impressoras DTF e UV-DTF da Brasil DTF
+        num lugar só, com suporte, treinamento e garantia.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <WhatsAppButton
+          label="Falar no WhatsApp"
+          size="lg"
+          contentName="Hero"
+          contentCategory="hero"
+        />
+        <Button href="#catalogo" variant="secondary" size="lg">Ver máquinas</Button>
+      </div>
+      <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+        {
+          trust.map((t) => (
+            <li class="flex items-center gap-2">
+              <Icon name="check" size={18} class="text-accent" />
+              {t}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="relative">
+      <div
+        class="rounded-2xl bg-white p-5 shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:p-8"
+      >
+        <Image
+          src={heroImg}
+          alt="Impressora DTF industrial da Brasil DTF"
+          widths={[480, 720, 960]}
+          sizes="(min-width: 1024px) 45vw, 90vw"
+          loading="eager"
+          fetchpriority="high"
+          class="aspect-[4/3] w-full object-contain"
+        />
+      </div>
+    </div>
+  </Container>
+</section>

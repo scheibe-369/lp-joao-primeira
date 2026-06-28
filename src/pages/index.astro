@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../modules/hero/Hero.astro';
+import WhyDtf from '../modules/why/WhyDtf.astro';
+import Catalog from '../modules/catalog/Catalog.astro';
+import About from '../modules/about/About.astro';
+import Trust from '../modules/trust/Trust.astro';
+import Testimonials from '../modules/testimonials/Testimonials.astro';
+import Faq from '../modules/faq/Faq.astro';
+import ContactBand from '../modules/contact/ContactBand.astro';
+
+const site = Astro.site?.toString() ?? 'https://lp.brasildtf.com.br';
+const title = 'Brasil DTF — Impressoras DTF e UV-DTF | Comece a faturar';
+const description =
+  'Impressoras DTF e UV-DTF, da iniciante A3 à industrial de 5 cabeças. Suporte, treinamento e garantia. Fale no WhatsApp e escolha a máquina certa pra você.';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Brasil DTF',
+    url: site,
+    logo: new URL('/favicon.svg', site).toString(),
+    description: 'Revenda de impressoras e insumos DTF e UV-DTF, com suporte, treinamento e garantia.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Brasil DTF',
+    url: site,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <Hero />
+  <WhyDtf />
+  <Catalog />
+  <About />
+  <Trust />
+  <Testimonials />
+  <Faq />
+  <ContactBand />
+</BaseLayout>

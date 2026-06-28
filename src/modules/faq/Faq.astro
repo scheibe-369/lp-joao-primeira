@@ -1,0 +1,96 @@
+---
+import Container from '../../components/ui/Container.astro';
+import Icon from '../../components/ui/Icon.astro';
+import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
+
+const faqs = [
+  {
+    q: 'O que é DTF?',
+    a: 'DTF (Direct to Film) é a impressão num filme especial que depois é transferido pro tecido com calor. Estampa qualquer cor de tecido, com cores vivas e ótima durabilidade.',
+  },
+  {
+    q: 'Preciso de experiência?',
+    a: 'Não. Todas as máquinas saem com treinamento incluso pra você operar desde o primeiro dia.',
+  },
+  { q: 'Tem garantia?', a: 'Sim. Todas as impressoras têm garantia e suporte técnico.' },
+  {
+    q: 'Vocês dão suporte?',
+    a: 'Sim — suporte em português pelo WhatsApp, em tempo real.',
+  },
+  {
+    q: 'Dá pra parcelar?',
+    a: 'Temos condições facilitadas de pagamento. Fale com a gente no WhatsApp pra ver a melhor opção pra você.',
+  },
+  {
+    q: 'Qual a diferença de têxtil pra UV-DTF?',
+    a: 'Têxtil é pra estampar tecidos (camisetas, moletons). UV-DTF é pra superfícies rígidas e rótulos crystal (vidro, metal, plástico, acrílico, madeira).',
+  },
+  {
+    q: 'Quais insumos eu preciso?',
+    a: 'Tinta, pó de poliamida e filme PET — todos abertos (sem cartucho travado). A Brasil DTF fornece os insumos.',
+  },
+];
+
+const guide = [
+  { who: 'Começando agora', pick: 'L8180 XP600', slug: 'l8180-xp600' },
+  { who: 'Pequeno negócio', pick: 'XF-400PRO A2', slug: 'xf-400pro-a2' },
+  { who: 'Produção 60cm', pick: '702E C650SC / Z650-2', slug: '702e-c650sc' },
+  { who: 'Alto volume', pick: 'C605 H6502', slug: 'c605-h6502' },
+  { who: 'UV / rótulos', pick: 'XF-420S / XF-450S', slug: 'xf-420s' },
+];
+---
+
+<section id="faq" class="scroll-mt-20 bg-navy py-16 sm:py-20 lg:py-24">
+  <Container class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+    <div data-reveal>
+      <p class="eyebrow">Dúvidas frequentes</p>
+      <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.25rem)] leading-none">Perguntas rápidas</h2>
+      <div class="mt-6 divide-y divide-white/10 border-y border-white/10">
+        {
+          faqs.map((f) => (
+            <details class="group">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left font-semibold text-white [&::-webkit-details-marker]:hidden">
+                <span>{f.q}</span>
+                <Icon
+                  name="chevron-down"
+                  size={20}
+                  class="shrink-0 text-accent transition-transform duration-300 group-open:rotate-180"
+                />
+              </summary>
+              <p class="pb-4 leading-relaxed text-muted">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <aside data-reveal>
+      <div class="rounded-2xl border border-white/10 bg-navy-surface p-6">
+        <h3 class="font-display text-2xl text-white">Qual máquina é pra você?</h3>
+        <ul class="mt-4 space-y-1.5">
+          {
+            guide.map((g) => (
+              <li>
+                <a
+                  href={`/maquinas/${g.slug}`}
+                  class="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                >
+                  <span class="text-sm text-muted">{g.who}</span>
+                  <span class="text-right text-sm font-semibold text-white">{g.pick}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-5">
+          <WhatsAppButton
+            label="Me ajuda a escolher"
+            block
+            contentName="FAQ — guia de escolha"
+            contentCategory="faq"
+          />
+        </div>
+      </div>
+    </aside>
+  </Container>
+</section>

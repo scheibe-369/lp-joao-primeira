@@ -1,0 +1,98 @@
+---
+import '../styles/globals.css';
+import Header from '../modules/header/Header.astro';
+import Footer from '../modules/footer/Footer.astro';
+import FloatingWhatsApp from '../modules/contact/FloatingWhatsApp.astro';
+import CookieBanner from '../modules/consent/CookieBanner.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+  jsonLd?: object | object[];
+}
+
+const {
+  title,
+  description,
+  image = '/og/og-default.jpg',
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://lp.brasildtf.com.br');
+const canonical = new URL(Astro.url.pathname, site).toString();
+const ogImage = new URL(image, site).toString();
+const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#051a3b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonte de display crítico (preload só da Bebas) -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/bebas-neue-latin-400.woff2"
+      crossorigin
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Brasil DTF" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {
+      jsonLdArray.map((obj) => (
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(obj)} />
+      ))
+    }
+
+    <!-- tracker stub: enfileira eventos antes da ilha de consent carregar -->
+    <script is:inline>
+      window.bdtfTrack = function () {
+        (window.__bdtfQ = window.__bdtfQ || []).push([].slice.call(arguments));
+      };
+    </script>
+  </head>
+  <body>
+    <a
+      href="#conteudo"
+      class="sr-only rounded bg-accent px-4 py-2 font-semibold text-accent-ink focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60]"
+      >Pular para o conteúdo</a
+    >
+    <Header />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <Footer />
+    <FloatingWhatsApp />
+    <CookieBanner />
+
+    <script>
+      import '../lib/scroll-reveal.ts';
+    </script>
+  </body>
+</html>

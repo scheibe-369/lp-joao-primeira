@@ -1,0 +1,44 @@
+---
+import Container from '../../components/ui/Container.astro';
+import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  message?: string;
+  contentName?: string;
+}
+const {
+  title = 'Pronto pra começar a faturar com DTF?',
+  subtitle = 'Fale com a gente no WhatsApp: a gente te ajuda a escolher a máquina certa, tira suas dúvidas e passa as condições.',
+  message,
+  contentName = 'ContactBand',
+} = Astro.props;
+---
+
+<section data-contactband class="relative overflow-hidden bg-navy-deep py-16 sm:py-20">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(60% 100% at 50% 120%, rgba(254,191,2,0.12), transparent 70%);"
+  >
+  </div>
+  <Container class="relative text-center">
+    <h2
+      class="font-display mx-auto max-w-3xl text-[clamp(2rem,5vw,3.5rem)] leading-none"
+      data-reveal
+    >
+      {title}
+    </h2>
+    <p class="mx-auto mt-4 max-w-2xl text-muted" data-reveal data-reveal-delay="80">{subtitle}</p>
+    <div class="mt-8 flex justify-center" data-reveal data-reveal-delay="160">
+      <WhatsAppButton
+        label="Falar no WhatsApp"
+        size="lg"
+        message={message}
+        contentName={contentName}
+        contentCategory="contactband"
+      />
+    </div>
+  </Container>
+</section>

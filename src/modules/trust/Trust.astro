@@ -1,0 +1,58 @@
+---
+import Container from '../../components/ui/Container.astro';
+import Icon from '../../components/ui/Icon.astro';
+
+const items = [
+  {
+    icon: 'shield-check',
+    title: 'Garantia + treinamento',
+    text: 'Toda máquina sai com garantia e treinamento incluso.',
+  },
+  {
+    icon: 'headset',
+    title: 'Suporte por WhatsApp',
+    text: 'Atendimento em português, em tempo real, quando você precisar.',
+  },
+  {
+    icon: 'droplet',
+    title: 'Insumos abertos',
+    text: 'Tinta, pó e filme sem cartucho travado — compre de quem quiser.',
+  },
+  {
+    icon: 'coins',
+    title: 'Condições facilitadas',
+    text: 'Converse no WhatsApp sobre formas de pagamento e parcelamento.',
+  },
+] as const;
+---
+
+<section class="bg-navy-deep py-16 sm:py-20">
+  <Container>
+    <header class="mb-10 max-w-2xl" data-reveal>
+      <p class="eyebrow">Por que a Brasil DTF</p>
+      <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.25rem)] leading-none">
+        Você compra uma parceria, não só uma caixa
+      </h2>
+    </header>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        items.map((it, i) => (
+          <div
+            class="rounded-xl border border-white/10 bg-navy-surface p-6"
+            data-reveal
+            data-reveal-delay={i * 70}
+          >
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-inset ring-accent/25">
+              <Icon name={it.icon} size={22} />
+            </span>
+            <h3 class="mt-4 font-display text-xl text-white">{it.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{it.text}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-6 text-xs text-muted">
+      * Condições de pagamento sujeitas a análise. Consulte os detalhes no WhatsApp.
+    </p>
+  </Container>
+</section>

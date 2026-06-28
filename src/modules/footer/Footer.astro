@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/brand/logo.png';
+import Container from '../../components/ui/Container.astro';
+import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/10 bg-navy-deep py-12 sm:py-16">
+  <Container>
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <span class="inline-flex items-center rounded-lg bg-white px-2.5 py-1.5">
+          <Image src={logo} alt="Brasil DTF" width={150} height={100} densities={[1, 2]} class="h-10 w-auto" />
+        </span>
+        <p class="mt-4 text-sm leading-relaxed text-muted">
+          Revenda especializada em impressoras e insumos DTF e UV-DTF, com suporte em português,
+          treinamento e garantia.
+        </p>
+        <p class="mt-3 text-xs text-muted">CNPJ 39.497.418/0001-91</p>
+      </div>
+
+      <nav aria-label="Rodapé" class="grid grid-cols-2 gap-x-10 gap-y-3 text-sm sm:grid-cols-1">
+        <a href="/#catalogo" class="text-muted transition-colors hover:text-white">Máquinas</a>
+        <a href="/#sobre" class="text-muted transition-colors hover:text-white">Sobre</a>
+        <a href="/#faq" class="text-muted transition-colors hover:text-white">Dúvidas frequentes</a>
+        <a href="/politica-de-privacidade" class="text-muted transition-colors hover:text-white"
+          >Política de Privacidade</a
+        >
+      </nav>
+
+      <div class="md:pt-1">
+        <WhatsAppButton label="Falar no WhatsApp" contentName="Footer" contentCategory="footer" />
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-white/10 pt-6 text-xs leading-relaxed text-muted">
+      <p>
+        © {year} Brasil DTF. Marcas e modelos citados pertencem aos seus respectivos fabricantes.
+        Imagens meramente ilustrativas.
+      </p>
+    </div>
+  </Container>
+</footer>
