@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { lineLabel, formatBRL, type Machine } from '../../data/machines';
+import { machineCategory, formatBRL, type Machine } from '../../data/machines';
 import { whatsappUrl } from '../../lib/whatsapp';
 import Badge from '../../components/ui/Badge.astro';
 import Icon from '../../components/ui/Icon.astro';
@@ -21,30 +21,28 @@ const detailUrl = `/maquinas/${machine.slug}`;
 <article class="card group flex flex-col" data-line={machine.line}>
   <a
     href={detailUrl}
-    class="relative block bg-white p-4"
+    class="relative block bg-white"
     aria-label={`Ver detalhes da ${machine.shortName}`}
   >
     <Image
       src={machine.image}
       alt={machine.name}
       width={480}
-      height={360}
+      height={480}
       loading="lazy"
-      class="aspect-[4/3] w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+      class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
     />
   </a>
 
   <div class="card-glow" aria-hidden="true"></div>
 
   <div class="relative flex flex-1 flex-col p-5">
-    <div class="flex items-center justify-between gap-2">
-      <Badge>{machine.badge}</Badge>
-      <span class="text-[11px] font-semibold uppercase tracking-eyebrow text-muted"
-        >{lineLabel[machine.line]}</span
-      >
-    </div>
+    <Badge>{machine.badge}</Badge>
 
-    <h3 class="mt-3 font-display text-2xl leading-none text-white">{machine.shortName}</h3>
+    <p class="mt-3 text-[11px] font-semibold uppercase tracking-eyebrow text-accent">
+      {machineCategory(machine)}
+    </p>
+    <h3 class="mt-1 font-display text-2xl leading-none text-white">{machine.shortName}</h3>
     <p class="mt-2 text-sm leading-relaxed text-muted">{machine.tagline}</p>
     <p class="mt-3 text-xs leading-relaxed text-muted">
       <span class="font-semibold text-white/80">Ideal para:</span>
