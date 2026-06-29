@@ -66,6 +66,8 @@ export interface Machine {
   shortName: string;
   line: MachineLine;
   tier: MachineTier;
+  /** true só na impressora adaptada (L8180, entrada R$ 14.980) → rótulo "ADAPTADA". */
+  adapted?: boolean;
   badge: string;
   tagline: string;
   target: string;
@@ -92,13 +94,14 @@ export const machines: Machine[] = [
     shortName: 'L8180 XP600',
     line: 'textile',
     tier: 'iniciante',
+    adapted: true,
     badge: 'Iniciante • A3',
     tagline: 'O jeito mais barato e completo de começar no DTF.',
     target: 'Quem está começando o primeiro negócio.',
     heads: '1× Epson XP600',
     width: 'A3 (~32 cm)',
     topSpeed: null,
-    price: { current: 14980, original: 16980 },
+    price: { current: 10000 },
     highlights: [
       'Kit turnkey: forno de poliamida e mesa a vácuo inclusos — pronto pra produzir no dia 1.',
       'Acompanha tintas (100 ml por cor), 30 folhas de filme A3, 200 g de pó de poliamida e o RIP Acrorip 11.2.',
@@ -132,7 +135,7 @@ export const machines: Machine[] = [
     heads: '2× Epson F1080-A1',
     width: '40 cm (16,5")',
     topSpeed: '3,5 m²/h',
-    price: { current: 54900, original: 63900 },
+    price: { current: 50000, original: 60000 },
     highlights: [
       'Impressão, aplicação de pó e cura integradas — solução all-in-one num corpo compacto.',
       'Circulação de tinta branca: menos entupimento, menos manutenção.',
@@ -168,7 +171,7 @@ export const machines: Machine[] = [
     heads: '2× Epson i3200-A1',
     width: '60 cm (24")',
     topSpeed: '8 m²/h',
-    price: { current: 79900, original: 89900 },
+    price: { current: 70000, original: 80000 },
     highlights: [
       'Cabeça dupla i3200-A1 com circulação automática de tinta branca.',
       'Agitador de pó integrado com take-up por sensor.',
@@ -203,7 +206,7 @@ export const machines: Machine[] = [
     heads: '2× Epson i3200-A1',
     width: '60 cm (24")',
     topSpeed: '10 m²/h',
-    price: { current: 79900, original: 89900 },
+    price: { current: 70000, original: 80000 },
     highlights: [
       'Até 10 m²/h com branco estável — feita para produção contínua.',
       'Levantamento elétrico do rolo de pressão para ajuste fino.',
@@ -341,3 +344,12 @@ export const lineLabel: Record<MachineLine, string> = {
   textile: 'Têxtil',
   uv: 'UV-DTF',
 };
+
+/** Rótulo de categoria exibido acima do nome (card e detalhe). Ex.:
+ *  "IMPRESSORA INDUSTRIAL DTF TÊXTIL" · "IMPRESSORA INDUSTRIAL DTF UV" ·
+ *  "IMPRESSORA ADAPTADA DTF TÊXTIL" (só a L8180, de entrada). */
+export function machineCategory(m: Machine): string {
+  const line = m.line === 'uv' ? 'UV' : 'TÊXTIL';
+  const type = m.adapted ? 'ADAPTADA' : 'INDUSTRIAL';
+  return `IMPRESSORA ${type} DTF ${line}`;
+}
