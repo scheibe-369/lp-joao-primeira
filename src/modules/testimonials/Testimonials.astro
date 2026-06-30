@@ -14,7 +14,7 @@ const testimonials: Testimonial[] = [];
 
 {
   testimonials.length > 0 && (
-    <section class="bg-navy py-16 sm:py-20 lg:py-24">
+    <section class="bg-surface py-16 sm:py-20 lg:py-24">
       <Container>
         <header class="mb-10 max-w-2xl" data-reveal>
           <p class="eyebrow">Quem já compra com a gente</p>
@@ -25,14 +25,14 @@ const testimonials: Testimonial[] = [];
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <figure
-              class="flex flex-col rounded-xl border border-white/10 bg-navy-surface p-6"
+              class="flex flex-col rounded-xl border border-line bg-surface p-6 shadow-elev-1"
               data-reveal
               data-reveal-delay={i * 70}
             >
-              <blockquote class="flex-1 text-white/90">“{t.quote}”</blockquote>
+              <blockquote class="flex-1 text-ink">“{t.quote}”</blockquote>
               <figcaption class="mt-4 text-sm">
-                <span class="font-semibold text-white">{t.name}</span>
-                <span class="text-muted"> · {t.city}</span>
+                <span class="font-semibold text-ink">{t.name}</span>
+                <span class="text-ink-muted"> · {t.city}</span>
               </figcaption>
             </figure>
           ))}

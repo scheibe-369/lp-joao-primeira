@@ -14,7 +14,7 @@ const bullets = [
 ];
 ---
 
-<section id="sobre" class="scroll-mt-20 bg-navy py-16 sm:py-20 lg:py-24">
+<section id="sobre" class="scroll-mt-20 bg-surface py-16 sm:py-20 lg:py-24">
   <Container class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
     <div class="order-2 lg:order-1">
       <div data-reveal>
@@ -27,10 +27,10 @@ const bullets = [
         {
           bullets.map((b, i) => (
             <li class="flex items-start gap-3" data-reveal data-reveal-delay={80 + i * 60}>
-              <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
+              <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink">
                 <Icon name="check" size={16} />
               </span>
-              <span class="leading-relaxed text-muted">{b}</span>
+              <span class="leading-relaxed text-ink-muted">{b}</span>
             </li>
           ))
         }
@@ -45,7 +45,7 @@ const bullets = [
     </div>
 
     <div class="order-1 lg:order-2" data-reveal>
-      <div class="overflow-hidden rounded-2xl ring-1 ring-white/10">
+      <div class="overflow-hidden rounded-2xl border border-line shadow-elev-2">
         <Image
           src={aboutImg}
           alt="Peça estampada com tecnologia DTF"

@@ -39,22 +39,22 @@ const detailUrl = `/maquinas/${machine.slug}`;
   <div class="relative flex flex-1 flex-col p-5">
     <Badge>{machine.badge}</Badge>
 
-    <p class="mt-3 text-[11px] font-semibold uppercase tracking-eyebrow text-accent">
+    <p class="mt-3 text-[11px] font-semibold uppercase tracking-eyebrow text-ink-muted">
       {machineCategory(machine)}
     </p>
-    <h3 class="mt-1 font-display text-2xl leading-none text-white">{machine.shortName}</h3>
-    <p class="mt-2 text-sm leading-relaxed text-muted">{machine.tagline}</p>
-    <p class="mt-3 text-xs leading-relaxed text-muted">
-      <span class="font-semibold text-white/80">Ideal para:</span>
+    <h3 class="mt-1 font-display text-2xl leading-none text-ink">{machine.shortName}</h3>
+    <p class="mt-2 text-sm leading-relaxed text-ink-muted">{machine.tagline}</p>
+    <p class="mt-3 text-xs leading-relaxed text-ink-muted">
+      <span class="font-semibold text-ink">Ideal para:</span>
       {machine.target}
     </p>
 
     <dl class="mt-4 grid gap-1.5 text-sm">
       {
         specsPreview.map((s) => (
-          <div class="flex items-baseline justify-between gap-3 border-b border-white/5 pb-1.5">
-            <dt class="shrink-0 text-muted">{s.label}</dt>
-            <dd class="text-right font-medium text-white">{s.value}</dd>
+          <div class="flex items-baseline justify-between gap-3 border-b border-line-subtle pb-1.5">
+            <dt class="shrink-0 text-ink-muted">{s.label}</dt>
+            <dd class="text-right font-medium text-ink">{s.value}</dd>
           </div>
         ))
       }
@@ -64,11 +64,11 @@ const detailUrl = `/maquinas/${machine.slug}`;
       machine.price && (
         <div class="mt-4">
           {machine.price.original && (
-            <span class="text-sm text-muted line-through">
+            <span class="text-sm text-ink-muted line-through">
               {formatBRL(machine.price.original)}
             </span>
           )}
-          <p class="font-display text-3xl leading-none text-accent">
+          <p class="font-display text-3xl leading-none text-ink">
             {formatBRL(machine.price.current)}
           </p>
         </div>
@@ -78,7 +78,7 @@ const detailUrl = `/maquinas/${machine.slug}`;
     <div class="mt-5 flex items-center gap-2 pt-1">
       <a
         href={detailUrl}
-        class="inline-flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full bg-white/5 px-4 text-sm font-semibold text-white ring-1 ring-inset ring-white/15 transition-colors hover:bg-white/10"
+        class="inline-flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full bg-fill px-4 text-sm font-semibold text-ink ring-1 ring-inset ring-line-strong transition-colors hover:bg-fill-hover"
       >
         Ver detalhes
         <Icon name="arrow-right" size={16} />

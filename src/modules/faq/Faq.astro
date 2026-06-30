@@ -40,24 +40,24 @@ const guide = [
 ];
 ---
 
-<section id="faq" class="scroll-mt-20 bg-navy py-16 sm:py-20 lg:py-24">
+<section id="faq" class="scroll-mt-20 bg-surface py-16 sm:py-20 lg:py-24">
   <Container class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
     <div data-reveal>
       <p class="eyebrow">Dúvidas frequentes</p>
       <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.25rem)] leading-none">Perguntas rápidas</h2>
-      <div class="mt-6 divide-y divide-white/10 border-y border-white/10">
+      <div class="mt-6 divide-y divide-line border-y border-line">
         {
           faqs.map((f) => (
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left font-semibold text-white [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left font-semibold text-ink [&::-webkit-details-marker]:hidden">
                 <span>{f.q}</span>
                 <Icon
                   name="chevron-down"
                   size={20}
-                  class="shrink-0 text-accent transition-transform duration-300 group-open:rotate-180"
+                  class="shrink-0 text-ink transition-transform duration-300 group-open:rotate-180"
                 />
               </summary>
-              <p class="pb-4 leading-relaxed text-muted">{f.a}</p>
+              <p class="pb-4 leading-relaxed text-ink-muted">{f.a}</p>
             </details>
           ))
         }
@@ -65,18 +65,18 @@ const guide = [
     </div>
 
     <aside data-reveal>
-      <div class="rounded-2xl border border-white/10 bg-navy-surface p-6">
-        <h3 class="font-display text-2xl text-white">Qual máquina é pra você?</h3>
+      <div class="rounded-2xl border border-line bg-surface p-6">
+        <h3 class="font-display text-2xl text-ink">Qual máquina é pra você?</h3>
         <ul class="mt-4 space-y-1.5">
           {
             guide.map((g) => (
               <li>
                 <a
                   href={`/maquinas/${g.slug}`}
-                  class="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                  class="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-fill"
                 >
-                  <span class="text-sm text-muted">{g.who}</span>
-                  <span class="text-right text-sm font-semibold text-white">{g.pick}</span>
+                  <span class="text-sm text-ink-muted">{g.who}</span>
+                  <span class="text-right text-sm font-semibold text-ink">{g.pick}</span>
                 </a>
               </li>
             ))
