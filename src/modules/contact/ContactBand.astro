@@ -16,23 +16,33 @@ const {
 } = Astro.props;
 ---
 
-<section data-contactband class="bg-surface py-16 sm:py-20">
-  <Container class="text-center">
-    <h2
-      class="font-display mx-auto max-w-3xl text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink"
+<section data-contactband class="relative overflow-hidden bg-surface-2 py-16 sm:py-24">
+  <!-- halo de acento decorativo (warmth + profundidade) -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute left-1/2 top-1/2 h-[150%] w-[78%] -translate-x-1/2 -translate-y-1/2"
+    style="background: radial-gradient(closest-side, rgba(254,191,2,0.12), transparent 72%);"
+  >
+  </div>
+  <Container class="relative">
+    <div
+      class="mx-auto max-w-3xl rounded-3xl border border-line-strong bg-surface px-6 py-12 text-center shadow-[0_30px_70px_-22px_rgba(5,26,59,0.32)] sm:px-12 sm:py-16"
       data-reveal
     >
-      {title}
-    </h2>
-    <p class="mx-auto mt-4 max-w-2xl text-ink-muted" data-reveal data-reveal-delay="80">{subtitle}</p>
-    <div class="mt-8 flex justify-center" data-reveal data-reveal-delay="160">
-      <WhatsAppButton
-        label="Falar no WhatsApp"
-        size="lg"
-        message={message}
-        contentName={contentName}
-        contentCategory="contactband"
-      />
+      <span class="mx-auto mb-6 block h-1.5 w-14 rounded-full bg-accent" aria-hidden="true"></span>
+      <h2 class="font-display mx-auto max-w-2xl text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink">
+        {title}
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-ink-muted">{subtitle}</p>
+      <div class="mt-8 flex justify-center">
+        <WhatsAppButton
+          label="Falar no WhatsApp"
+          size="lg"
+          message={message}
+          contentName={contentName}
+          contentCategory="contactband"
+        />
+      </div>
     </div>
   </Container>
 </section>
