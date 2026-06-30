@@ -21,19 +21,20 @@ const items = [
 ] as const;
 ---
 
-<section class="border-y border-line bg-surface py-12 sm:py-14">
-  <Container>
+<section class="border-y border-white/10 bg-navy on-dark relative overflow-hidden py-12 sm:py-14">
+  <div class="aura" aria-hidden="true"></div>
+  <Container class="relative">
     <h2 class="sr-only">Por que escolher DTF</h2>
     <ul class="grid gap-8 sm:grid-cols-3">
       {
         items.map((it, i) => (
-          <li class="flex items-start gap-4" data-reveal data-reveal-delay={i * 80}>
+          <li class="glass glass-hover rounded-2xl p-6 flex items-start gap-4" data-reveal data-reveal-delay={i * 80}>
             <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-ink">
               <Icon name={it.icon} size={22} />
             </span>
             <div>
-              <h3 class="font-display text-xl text-ink">{it.title}</h3>
-              <p class="mt-1 text-sm leading-relaxed text-ink-muted">{it.text}</p>
+              <h3 class="font-display text-xl">{it.title}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-muted">{it.text}</p>
             </div>
           </li>
         ))

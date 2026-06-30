@@ -65,30 +65,33 @@ const guide = [
     </div>
 
     <aside data-reveal>
-      <div class="rounded-2xl border border-line bg-surface p-6">
-        <h3 class="font-display text-2xl text-ink">Qual máquina é pra você?</h3>
-        <ul class="mt-4 space-y-1.5">
-          {
-            guide.map((g) => (
-              <li>
-                <a
-                  href={`/maquinas/${g.slug}`}
-                  class="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-fill"
-                >
-                  <span class="text-sm text-ink-muted">{g.who}</span>
-                  <span class="text-right text-sm font-semibold text-ink">{g.pick}</span>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <div class="mt-5">
-          <WhatsAppButton
-            label="Me ajuda a escolher"
-            block
-            contentName="FAQ — guia de escolha"
-            contentCategory="faq"
-          />
+      <div class="relative overflow-hidden rounded-2xl bg-navy on-dark p-6">
+        <div class="aura" aria-hidden="true"></div>
+        <div class="relative">
+          <h3 class="font-display text-2xl text-white">Qual máquina é pra você?</h3>
+          <ul class="mt-4 space-y-1.5">
+            {
+              guide.map((g) => (
+                <li>
+                  <a
+                    href={`/maquinas/${g.slug}`}
+                    class="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/10"
+                  >
+                    <span class="text-sm text-muted">{g.who}</span>
+                    <span class="text-right text-sm font-semibold text-white">{g.pick}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="mt-5">
+            <WhatsAppButton
+              label="Me ajuda a escolher"
+              block
+              contentName="FAQ — guia de escolha"
+              contentCategory="faq"
+            />
+          </div>
         </div>
       </div>
     </aside>

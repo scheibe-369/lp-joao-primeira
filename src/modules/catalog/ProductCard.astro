@@ -37,24 +37,24 @@ const detailUrl = `/maquinas/${machine.slug}`;
   <div class="card-glow" aria-hidden="true"></div>
 
   <div class="relative flex flex-1 flex-col p-5">
-    <Badge>{machine.badge}</Badge>
+    <Badge variant="solid">{machine.badge}</Badge>
 
-    <p class="mt-3 text-[11px] font-semibold uppercase tracking-eyebrow text-ink-muted">
+    <p class="mt-3 text-[11px] font-semibold uppercase tracking-eyebrow text-muted">
       {machineCategory(machine)}
     </p>
-    <h3 class="mt-1 font-display text-2xl leading-none text-ink">{machine.shortName}</h3>
-    <p class="mt-2 text-sm leading-relaxed text-ink-muted">{machine.tagline}</p>
-    <p class="mt-3 text-xs leading-relaxed text-ink-muted">
-      <span class="font-semibold text-ink">Ideal para:</span>
+    <h3 class="mt-1 font-display text-2xl leading-none text-white">{machine.shortName}</h3>
+    <p class="mt-2 text-sm leading-relaxed text-muted">{machine.tagline}</p>
+    <p class="mt-3 text-xs leading-relaxed text-muted">
+      <span class="font-semibold text-white">Ideal para:</span>
       {machine.target}
     </p>
 
     <dl class="mt-4 grid gap-1.5 text-sm">
       {
         specsPreview.map((s) => (
-          <div class="flex items-baseline justify-between gap-3 border-b border-line-subtle pb-1.5">
-            <dt class="shrink-0 text-ink-muted">{s.label}</dt>
-            <dd class="text-right font-medium text-ink">{s.value}</dd>
+          <div class="flex items-baseline justify-between gap-3 border-b border-white/10 pb-1.5">
+            <dt class="shrink-0 text-muted">{s.label}</dt>
+            <dd class="text-right font-medium text-white">{s.value}</dd>
           </div>
         ))
       }
@@ -64,11 +64,11 @@ const detailUrl = `/maquinas/${machine.slug}`;
       machine.price && (
         <div class="mt-4">
           {machine.price.original && (
-            <span class="text-sm text-ink-muted line-through">
+            <span class="text-sm text-muted line-through">
               {formatBRL(machine.price.original)}
             </span>
           )}
-          <p class="font-display text-3xl leading-none text-ink">
+          <p class="font-display text-3xl leading-none text-white">
             {formatBRL(machine.price.current)}
           </p>
         </div>
@@ -78,7 +78,7 @@ const detailUrl = `/maquinas/${machine.slug}`;
     <div class="mt-5 flex items-center gap-2 pt-1">
       <a
         href={detailUrl}
-        class="inline-flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full bg-fill px-4 text-sm font-semibold text-ink ring-1 ring-inset ring-line-strong transition-colors hover:bg-fill-hover"
+        class="inline-flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full bg-white/5 px-4 text-sm font-semibold text-white ring-1 ring-inset ring-white/15 transition-colors hover:bg-white/10"
       >
         Ver detalhes
         <Icon name="arrow-right" size={16} />
@@ -96,6 +96,8 @@ const detailUrl = `/maquinas/${machine.slug}`;
       >
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
           <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
             d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.515 5.26l-.999 3.648 3.464-.787zm5.776-5.392c-.075-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
           ></path>
         </svg>

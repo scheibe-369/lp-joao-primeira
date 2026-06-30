@@ -14,8 +14,9 @@ const bullets = [
 ];
 ---
 
-<section id="sobre" class="scroll-mt-20 bg-surface py-16 sm:py-20 lg:py-24">
-  <Container class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+<section id="sobre" class="scroll-mt-20 bg-navy on-dark relative overflow-hidden py-16 sm:py-20 lg:py-24">
+  <div class="aura" aria-hidden="true"></div>
+  <Container class="relative grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
     <div class="order-2 lg:order-1">
       <div data-reveal>
         <p class="eyebrow">Sobre a Brasil DTF</p>
@@ -23,18 +24,20 @@ const bullets = [
           Mais que uma máquina: um parceiro pra você produzir
         </h2>
       </div>
-      <ul class="mt-6 space-y-3">
-        {
-          bullets.map((b, i) => (
-            <li class="flex items-start gap-3" data-reveal data-reveal-delay={80 + i * 60}>
-              <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink">
-                <Icon name="check" size={16} />
-              </span>
-              <span class="leading-relaxed text-ink-muted">{b}</span>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="glass rounded-2xl p-6 mt-6">
+        <ul class="space-y-3">
+          {
+            bullets.map((b, i) => (
+              <li class="flex items-start gap-3" data-reveal data-reveal-delay={80 + i * 60}>
+                <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink">
+                  <Icon name="check" size={16} />
+                </span>
+                <span class="leading-relaxed text-muted">{b}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
       <div class="mt-8" data-reveal data-reveal-delay="420">
         <WhatsAppButton
           label="Tirar dúvidas no WhatsApp"
@@ -45,7 +48,7 @@ const bullets = [
     </div>
 
     <div class="order-1 lg:order-2" data-reveal>
-      <div class="overflow-hidden rounded-2xl border border-line shadow-elev-2">
+      <div class="overflow-hidden rounded-2xl border border-white/10 shadow-elev-3">
         <Image
           src={aboutImg}
           alt="Peça estampada com tecnologia DTF"
