@@ -37,12 +37,15 @@ const sizes = {
 const variants = {
   light: {
     primary: 'bg-accent text-accent-ink hover:brightness-95',
-    secondary: 'border border-line-strong text-ink hover:bg-fill hover:border-ink-soft',
+    // vidro: translúcido + blur (frosted)
+    secondary:
+      'border border-line-strong bg-white/50 text-ink backdrop-blur-md hover:bg-white/75 hover:border-ink-soft',
     ghost: 'text-ink hover:bg-fill',
   },
   dark: {
     primary: 'bg-accent text-accent-ink hover:brightness-95',
-    secondary: 'border border-white/30 text-white hover:bg-white/10 hover:border-white/50',
+    secondary:
+      'border border-white/30 bg-white/10 text-white backdrop-blur-md hover:bg-white/20 hover:border-white/50',
     ghost: 'text-white hover:bg-white/10',
   },
 };
