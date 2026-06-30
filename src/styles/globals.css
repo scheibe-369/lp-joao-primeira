@@ -156,12 +156,14 @@
   position: relative;
   height: 100%;
   overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: #0a2350;
-  box-shadow: 0 16px 40px -18px rgba(5, 26, 59, 0.45);
-  transition: border-color 400ms var(--ease), background-color 400ms var(--ease),
-    box-shadow 400ms var(--ease), transform 400ms var(--ease);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(130% 90% at 50% -20%, rgb(var(--accent) / 0.08), transparent 55%),
+    linear-gradient(180deg, #0a2148 0%, #051a3b 45%, #030f24 100%);
+  box-shadow: 0 20px 50px -24px rgba(3, 15, 36, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 400ms var(--ease), box-shadow 400ms var(--ease),
+    transform 400ms var(--ease);
 }
 .card-glow {
   pointer-events: none;
@@ -188,7 +190,6 @@
 @media (hover: hover) {
   .card:hover {
     border-color: rgb(var(--accent) / 0.5);
-    background-color: #0c2a5e;
     box-shadow: 0 0 60px -16px rgb(var(--accent) / 0.35), 0 18px 44px -18px rgba(5, 26, 59, 0.55);
     transform: translateY(-3px);
   }
@@ -200,38 +201,20 @@
 }
 
 /* ============================================================================
-   GLASS — cards translúcidos (frosted) para as faixas navy
+   CARD DARK — card premium escuro (estilo referência): gradiente navy
+   (mais claro no topo c/ leve glow do acento) -> quase-preto embaixo
    ========================================================================== */
-.glass {
-  background: rgba(255, 255, 255, 0.06);
-  -webkit-backdrop-filter: blur(12px) saturate(130%);
-  backdrop-filter: blur(12px) saturate(130%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+.card-dark {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(130% 90% at 50% -20%, rgb(var(--accent) / 0.08), transparent 55%),
+    linear-gradient(180deg, #0a2148 0%, #051a3b 45%, #030f24 100%);
+  box-shadow: 0 20px 50px -24px rgba(3, 15, 36, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  color: #ffffff;
 }
-@media (hover: hover) {
-  .glass-hover {
-    transition: background-color 350ms var(--ease), border-color 350ms var(--ease),
-      transform 350ms var(--ease);
-  }
-  .glass-hover:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgb(var(--accent) / 0.45);
-    transform: translateY(-3px);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .glass-hover { transition: none; }
-}
-/* glass CLARO: frosted para usar sobre fundo claro (com aura atrás p/ fosquear) */
-.glass-light {
-  background: rgba(255, 255, 255, 0.5);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 12px 34px -14px rgba(5, 26, 59, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
-}
-/* aura decorativa atrás das faixas navy (dá profundidade + o glass tem o que fosquear) */
+/* aura decorativa atrás das faixas navy (dá profundidade) */
 .aura {
   pointer-events: none;
   position: absolute;
