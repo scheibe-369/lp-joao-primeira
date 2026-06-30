@@ -223,6 +223,14 @@
 @media (prefers-reduced-motion: reduce) {
   .glass-hover { transition: none; }
 }
+/* glass CLARO: frosted para usar sobre fundo claro (com aura atrás p/ fosquear) */
+.glass-light {
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 34px -14px rgba(5, 26, 59, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+}
 /* aura decorativa atrás das faixas navy (dá profundidade + o glass tem o que fosquear) */
 .aura {
   pointer-events: none;
