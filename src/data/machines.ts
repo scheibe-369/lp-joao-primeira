@@ -51,11 +51,11 @@ export interface MachinePrice {
   original?: number;
 }
 
-/** Formata um valor em reais no padrão pt-BR: 14980 → "R$ 14.980". */
+/** Formata um valor em reais no padrão pt-BR: 14980 → "R$ 14.980,00". */
 const _brl = new Intl.NumberFormat('pt-BR', {
   style: 'currency',
   currency: 'BRL',
-  minimumFractionDigits: 0,
+  minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
 export const formatBRL = (value: number): string => _brl.format(value);
