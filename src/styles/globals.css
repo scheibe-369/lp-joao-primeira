@@ -156,22 +156,22 @@
   position: relative;
   height: 100%;
   overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid #e3e8f1;
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px -1px rgba(5, 26, 59, 0.06), 0 10px 24px -8px rgba(5, 26, 59, 0.1);
-  transition: border-color 400ms var(--ease), box-shadow 400ms var(--ease),
-    transform 400ms var(--ease);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #0a2350;
+  box-shadow: 0 16px 40px -18px rgba(5, 26, 59, 0.45);
+  transition: border-color 400ms var(--ease), background-color 400ms var(--ease),
+    box-shadow 400ms var(--ease), transform 400ms var(--ease);
 }
 .card-glow {
   pointer-events: none;
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 600ms var(--ease);
+  transition: opacity 700ms var(--ease);
   background: radial-gradient(
     130% 80% at 50% 110%,
-    rgb(var(--accent) / 0.1) 0%,
+    rgb(var(--accent) / 0.2) 0%,
     rgb(var(--accent) / 0) 65%
   );
 }
@@ -187,15 +187,67 @@
 }
 @media (hover: hover) {
   .card:hover {
-    border-color: rgb(var(--accent) / 0.55);
-    box-shadow: 0 8px 16px -4px rgba(5, 26, 59, 0.08), 0 24px 48px -12px rgba(5, 26, 59, 0.16);
-    transform: translateY(-2px);
+    border-color: rgb(var(--accent) / 0.5);
+    background-color: #0c2a5e;
+    box-shadow: 0 0 60px -16px rgb(var(--accent) / 0.35), 0 18px 44px -18px rgba(5, 26, 59, 0.55);
+    transform: translateY(-3px);
   }
   .card:hover .card-glow { opacity: 1; }
   .card:hover .card-line { transform: scaleX(1); }
 }
 @media (prefers-reduced-motion: reduce) {
   .card, .card-glow, .card-line { transition: none; }
+}
+
+/* ============================================================================
+   GLASS — cards translúcidos (frosted) para as faixas navy
+   ========================================================================== */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+@media (hover: hover) {
+  .glass-hover {
+    transition: background-color 350ms var(--ease), border-color 350ms var(--ease),
+      transform 350ms var(--ease);
+  }
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgb(var(--accent) / 0.45);
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glass-hover { transition: none; }
+}
+/* aura decorativa atrás das faixas navy (dá profundidade + o glass tem o que fosquear) */
+.aura {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.aura::before,
+.aura::after {
+  content: '';
+  position: absolute;
+  width: 42rem;
+  height: 42rem;
+  border-radius: 9999px;
+  filter: blur(40px);
+}
+.aura::before {
+  top: -14rem;
+  right: -8rem;
+  background: radial-gradient(closest-side, rgb(var(--accent) / 0.14), transparent 70%);
+}
+.aura::after {
+  bottom: -16rem;
+  left: -10rem;
+  background: radial-gradient(closest-side, rgba(56, 92, 168, 0.35), transparent 70%);
 }
 
 /* ============================================================================
