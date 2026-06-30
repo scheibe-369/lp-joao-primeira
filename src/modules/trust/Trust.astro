@@ -26,12 +26,11 @@ const items = [
 ] as const;
 ---
 
-<section class="bg-navy-deep on-dark relative overflow-hidden py-16 sm:py-20">
-  <div class="aura" aria-hidden="true"></div>
-  <Container class="relative">
+<section class="bg-surface-2 py-16 sm:py-20">
+  <Container>
     <header class="mb-10 max-w-2xl" data-reveal>
       <p class="eyebrow">Por que a Brasil DTF</p>
-      <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.25rem)] leading-none">
+      <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.25rem)] leading-none text-ink">
         Você compra uma parceria, não só uma caixa
       </h2>
     </header>
@@ -39,7 +38,7 @@ const items = [
       {
         items.map((it, i) => (
           <div
-            class="glass glass-hover rounded-2xl p-6"
+            class="on-dark rounded-2xl bg-navy p-6 shadow-elev-2"
             data-reveal
             data-reveal-delay={i * 70}
           >
@@ -52,7 +51,7 @@ const items = [
         ))
       }
     </div>
-    <p class="mt-6 text-xs text-muted">
+    <p class="mt-6 text-xs text-ink-muted">
       * Condições de pagamento sujeitas a análise. Consulte os detalhes no WhatsApp.
     </p>
   </Container>

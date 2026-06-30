@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../../assets/brand/logo-white.png';
+import logo from '../../assets/brand/logo.png';
 import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
 ---
 
-<header class="on-dark sticky top-0 z-40 border-b border-white/10 bg-navy/85 backdrop-blur-md">
+<header class="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur-md">
   <div
     class="mx-auto flex h-16 max-w-content items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
   >
@@ -21,12 +21,12 @@ import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
     <nav class="flex items-center gap-4">
       <a
         href="/#catalogo"
-        class="hidden text-sm font-semibold text-muted transition-colors hover:text-white md:inline"
+        class="hidden text-sm font-semibold text-ink-muted transition-colors hover:text-ink md:inline"
         >Máquinas</a
       >
       <a
         href="/#sobre"
-        class="hidden text-sm font-semibold text-muted transition-colors hover:text-white md:inline"
+        class="hidden text-sm font-semibold text-ink-muted transition-colors hover:text-ink md:inline"
         >Sobre</a
       >
       <WhatsAppButton

@@ -14,17 +14,16 @@ const bullets = [
 ];
 ---
 
-<section id="sobre" class="scroll-mt-20 bg-navy on-dark relative overflow-hidden py-16 sm:py-20 lg:py-24">
-  <div class="aura" aria-hidden="true"></div>
-  <Container class="relative grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+<section id="sobre" class="scroll-mt-20 bg-surface py-16 sm:py-20 lg:py-24">
+  <Container class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
     <div class="order-2 lg:order-1">
       <div data-reveal>
         <p class="eyebrow">Sobre a Brasil DTF</p>
-        <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] leading-none">
+        <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink">
           Mais que uma máquina: um parceiro pra você produzir
         </h2>
       </div>
-      <div class="glass rounded-2xl p-6 mt-6">
+      <div class="on-dark mt-6 rounded-2xl bg-navy p-6 shadow-elev-2">
         <ul class="space-y-3">
           {
             bullets.map((b, i) => (
@@ -48,7 +47,7 @@ const bullets = [
     </div>
 
     <div class="order-1 lg:order-2" data-reveal>
-      <div class="overflow-hidden rounded-2xl border border-white/10 shadow-elev-3">
+      <div class="overflow-hidden rounded-2xl border border-line shadow-elev-2">
         <Image
           src={aboutImg}
           alt="Peça estampada com tecnologia DTF"
