@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import heroImg from '../../assets/hero/hero.png';
 import Container from '../../components/ui/Container.astro';
 import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
-import Button from '../../components/ui/Button.astro';
 import Icon from '../../components/ui/Icon.astro';
 
 const trust = ['Garantia + treinamento', 'Suporte por WhatsApp', 'Insumos abertos'] as const;
@@ -26,14 +25,28 @@ const trust = ['Garantia + treinamento', 'Suporte por WhatsApp', 'Insumos aberto
         Da iniciante A3 à industrial de 5 cabeças — todas as impressoras DTF e UV-DTF da Brasil DTF
         num lugar só, com suporte, treinamento e garantia.
       </p>
-      <div class="mt-8 flex flex-wrap gap-3">
+      <div class="mt-8 flex flex-wrap items-center gap-3">
         <WhatsAppButton
           label="Falar no WhatsApp"
           size="lg"
           contentName="Hero"
           contentCategory="hero"
         />
-        <Button href="#catalogo" variant="secondary" size="lg">Ver máquinas</Button>
+        <a
+          href="#catalogo"
+          aria-label="Ver máquinas — catálogo"
+          class="group inline-flex items-center gap-3 rounded-2xl border border-line bg-white/70 py-2 pl-5 pr-2 shadow-elev-2 backdrop-blur-md transition-[background-color,box-shadow] duration-200 hover:bg-white/90 hover:shadow-elev-3"
+        >
+          <span class="text-left leading-tight">
+            <span class="block text-base font-semibold text-ink">Ver máquinas</span>
+            <span class="block text-xs text-ink-muted">7 modelos</span>
+          </span>
+          <span
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-navy text-white transition-transform duration-200 group-hover:scale-105"
+          >
+            <Icon name="arrow-right" size={18} />
+          </span>
+        </a>
       </div>
       <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-muted">
         {
