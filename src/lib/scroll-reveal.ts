@@ -52,6 +52,17 @@ function init(): void {
     );
     fo.observe(band);
   }
+
+  // ---- navbar: ganha destaque (cinza claro + linha + sombra) após o 1º scroll ----
+  const header = document.getElementById('site-header');
+  const sentinel = document.getElementById('top-sentinel');
+  if (header && sentinel) {
+    const ho = new IntersectionObserver(
+      ([entry]) => header.classList.toggle('is-scrolled', !entry.isIntersecting),
+      { threshold: 0 }
+    );
+    ho.observe(sentinel);
+  }
 }
 
 if (document.readyState !== 'loading') init();
