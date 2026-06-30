@@ -6,7 +6,12 @@ interface Props {
   contain?: boolean; // content-visibility:auto p/ seções abaixo da dobra
 }
 const { id, class: className = '', bg = 'base', contain = false } = Astro.props;
-const bgClass = bg === 'deep' ? 'bg-navy-deep' : bg === 'surface' ? 'bg-navy-surface' : 'bg-navy';
+const bgClass =
+  bg === 'deep'
+    ? 'bg-surface-2'
+    : bg === 'surface'
+      ? 'bg-surface border border-line shadow-elev-1'
+      : 'bg-surface';
 ---
 
 <section
