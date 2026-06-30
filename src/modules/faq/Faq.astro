@@ -1,33 +1,33 @@
 ---
 import Container from '../../components/ui/Container.astro';
-import Icon from '../../components/ui/Icon.astro';
 import WhatsAppButton from '../../components/ui/WhatsAppButton.astro';
 
+// Respostas aceitam <strong> p/ destacar trechos-chave (negrito leve).
 const faqs = [
   {
     q: 'O que é DTF?',
-    a: 'DTF (Direct to Film) é a impressão num filme especial que depois é transferido pro tecido com calor. Estampa qualquer cor de tecido, com cores vivas e ótima durabilidade.',
+    a: 'DTF (<strong>Direct to Film</strong>) é a impressão num filme especial que depois é transferido pro tecido com calor. Estampa <strong>qualquer cor de tecido</strong>, com cores vivas e ótima durabilidade.',
   },
   {
     q: 'Preciso de experiência?',
-    a: 'Não. Todas as máquinas saem com treinamento incluso pra você operar desde o primeiro dia.',
+    a: 'Não. Todas as máquinas saem com <strong>treinamento incluso</strong> pra você operar desde o primeiro dia.',
   },
-  { q: 'Tem garantia?', a: 'Sim. Todas as impressoras têm garantia e suporte técnico.' },
+  { q: 'Tem garantia?', a: 'Sim. Todas as impressoras têm <strong>garantia e suporte técnico</strong>.' },
   {
     q: 'Vocês dão suporte?',
-    a: 'Sim — suporte em português pelo WhatsApp, em tempo real.',
+    a: 'Sim — <strong>suporte em português pelo WhatsApp</strong>, em tempo real.',
   },
   {
     q: 'Dá pra parcelar?',
-    a: 'Temos condições facilitadas de pagamento. Fale com a gente no WhatsApp pra ver a melhor opção pra você.',
+    a: 'Temos <strong>condições facilitadas</strong> de pagamento. Fale com a gente no WhatsApp pra ver a melhor opção pra você.',
   },
   {
     q: 'Qual a diferença de têxtil pra UV-DTF?',
-    a: 'Têxtil é pra estampar tecidos (camisetas, moletons). UV-DTF é pra superfícies rígidas e rótulos crystal (vidro, metal, plástico, acrílico, madeira).',
+    a: '<strong>Têxtil</strong> é pra estampar tecidos (camisetas, moletons). <strong>UV-DTF</strong> é pra superfícies rígidas e rótulos crystal (vidro, metal, plástico, acrílico, madeira).',
   },
   {
     q: 'Quais insumos eu preciso?',
-    a: 'Tinta, pó de poliamida e filme PET — todos abertos (sem cartucho travado). A Brasil DTF fornece os insumos.',
+    a: 'Tinta, pó de poliamida e filme PET — todos <strong>abertos</strong> (sem cartucho travado). A Brasil DTF fornece os insumos.',
   },
 ];
 
@@ -45,19 +45,17 @@ const guide = [
     <div data-reveal>
       <p class="eyebrow">Dúvidas frequentes</p>
       <h2 class="font-display mt-3 text-[clamp(2rem,5vw,3.25rem)] leading-none">Perguntas rápidas</h2>
-      <div class="mt-6 divide-y divide-line border-y border-line">
+      <div class="mt-6 space-y-1">
         {
           faqs.map((f) => (
-            <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left font-semibold text-ink [&::-webkit-details-marker]:hidden">
-                <span>{f.q}</span>
-                <Icon
-                  name="chevron-down"
-                  size={20}
-                  class="shrink-0 text-ink transition-transform duration-300 group-open:rotate-180"
-                />
+            <details name="faq" class="faq-item group">
+              <summary class="faq-summary flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 text-left [&::-webkit-details-marker]:hidden sm:px-5">
+                <span class="font-medium text-ink-muted transition-colors group-open:font-semibold group-open:text-ink sm:text-lg">
+                  {f.q}
+                </span>
+                <span class="faq-toggle" aria-hidden="true" />
               </summary>
-              <p class="pb-4 leading-relaxed text-ink-muted">{f.a}</p>
+              <p class="faq-answer px-4 pb-5 leading-relaxed text-ink-muted sm:px-5" set:html={f.a} />
             </details>
           ))
         }
