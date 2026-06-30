@@ -16,15 +16,8 @@ const {
 } = Astro.props;
 ---
 
-<section data-contactband class="relative overflow-hidden bg-surface-2 py-16 sm:py-24">
-  <!-- halo de acento decorativo (warmth + profundidade) -->
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute left-1/2 top-1/2 h-[150%] w-[78%] -translate-x-1/2 -translate-y-1/2"
-    style="background: radial-gradient(closest-side, rgba(254,191,2,0.12), transparent 72%);"
-  >
-  </div>
-  <Container class="relative">
+<section data-contactband class="bg-surface-2 py-16 sm:py-24">
+  <Container>
     <div
       class="mx-auto max-w-4xl rounded-3xl border border-line-strong bg-surface px-8 py-14 text-center shadow-[0_34px_80px_-24px_rgba(5,26,59,0.34)] sm:px-16 sm:py-20"
       data-reveal
