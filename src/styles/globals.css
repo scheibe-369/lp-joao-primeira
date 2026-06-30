@@ -65,6 +65,7 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --accent: 254 191 2; /* #febf02 */
   --navy: 5 26 59; /* #051a3b */
+  --ease-faq: cubic-bezier(0.4, 0, 0.2, 1); /* suave (in-out) p/ o accordion */
   interpolate-size: allow-keywords; /* permite animar height/block-size até 'auto' */
 }
 
@@ -355,7 +356,7 @@
 /* fechado: linha limpa (sem card/borda). aberto: card amarelo MUITO leve. */
 .faq-item {
   border-radius: 16px;
-  transition: background-color 250ms var(--ease), box-shadow 250ms var(--ease);
+  transition: background-color 450ms var(--ease-faq), box-shadow 450ms var(--ease-faq);
 }
 .faq-item[open] {
   background-color: rgb(var(--accent) / 0.07);
@@ -370,7 +371,7 @@
   flex-shrink: 0;
   border-radius: 9999px;
   background-color: #eef2f8;
-  transition: background-color 250ms var(--ease);
+  transition: background-color 450ms var(--ease-faq);
 }
 .faq-toggle::before,
 .faq-toggle::after {
@@ -378,15 +379,21 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 2px;
-  width: 0.7rem;
   border-radius: 2px;
   background-color: #8492a8;
+  transition: transform 450ms var(--ease-faq), background-color 400ms var(--ease-faq);
+}
+.faq-toggle::before {
+  /* barra horizontal = o "-" (sempre visível) */
+  height: 2px;
+  width: 0.7rem;
   transform: translate(-50%, -50%);
-  transition: transform 320ms var(--ease), background-color 250ms var(--ease);
 }
 .faq-toggle::after {
-  transform: translate(-50%, -50%) rotate(90deg); /* barra vertical -> "+" */
+  /* barra vertical: junto com a horizontal forma o "+" */
+  height: 0.7rem;
+  width: 2px;
+  transform: translate(-50%, -50%) scaleY(1);
 }
 .faq-item[open] .faq-toggle {
   background-color: #051a3b; /* navy quando aberto */
@@ -396,19 +403,16 @@
   background-color: #ffffff;
 }
 .faq-item[open] .faq-toggle::after {
-  transform: translate(-50%, -50%) rotate(0deg); /* gira a vertical p/ horizontal -> "-" fluido */
+  transform: translate(-50%, -50%) scaleY(0); /* vertical encolhe reto -> vira "-" (sem giro/glitch) */
 }
-/* conteúdo abre/fecha suave (altura + fade); degrada p/ instantâneo em browsers sem ::details-content */
+/* conteúdo abre/fecha suave (só altura, sem fade que pisca); degrada p/ instantâneo */
 .faq-item::details-content {
   overflow: hidden;
   block-size: 0;
-  opacity: 0;
-  transition: opacity 280ms var(--ease), block-size 320ms var(--ease),
-    content-visibility 320ms allow-discrete;
+  transition: block-size 450ms var(--ease-faq), content-visibility 450ms allow-discrete;
 }
 .faq-item[open]::details-content {
   block-size: auto;
-  opacity: 1;
 }
 /* negrito LEVE em trechos-chave da resposta */
 .faq-answer strong {
