@@ -1,6 +1,7 @@
 /* ============================================================================
    Brasil DTF — globals.css
-   Tokens + base dark-first + efeitos (metal-shine, card-glow, scroll-reveal).
+   Tokens + base tema CLARO (âncoras navy via .on-dark) + efeitos (card-glow, scroll-reveal).
+   metal-shine: dormente; só usar sobre navy sólido (âncora), nunca sobre bg claro.
    Fontes self-hosted (woff2 subset latin). Ver PRD §6.1 e §10.
    ========================================================================== */
 
@@ -71,11 +72,11 @@
     scroll-behavior: smooth;
     scroll-padding-top: 4.5rem; /* compensa o header sticky em âncoras */
     -webkit-text-size-adjust: 100%;
-    scrollbar-color: rgb(var(--accent)) #03122b;
+    scrollbar-color: #cdd6e4 #f5f7fb;
   }
   body {
-    background-color: #051a3b;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #051a3b;
     font-family: theme('fontFamily.body');
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -88,9 +89,17 @@
   a { color: inherit; text-decoration: none; }
   img, picture, svg, video { display: block; max-width: 100%; }
   :focus-visible {
-    outline: 2px solid #febf02;
+    outline: 2px solid #051a3b;
     outline-offset: 2px;
     border-radius: 2px;
+  }
+  /* âncoras escuras: texto claro por padrão (blinda texto "pelado" no navy) */
+  .on-dark {
+    color: #ffffff;
+  }
+  /* dentro das âncoras navy, o foco volta a ser amarelo (visível sobre escuro) */
+  .on-dark :focus-visible {
+    outline-color: #febf02;
   }
   ::selection {
     background: #febf02;
@@ -148,20 +157,21 @@
   height: 100%;
   overflow: hidden;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background-color: #0a2350;
-  transition: background-color 900ms var(--ease), border-color 900ms var(--ease),
-    box-shadow 900ms var(--ease);
+  border: 1px solid #e3e8f1;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px -1px rgba(5, 26, 59, 0.06), 0 10px 24px -8px rgba(5, 26, 59, 0.1);
+  transition: border-color 400ms var(--ease), box-shadow 400ms var(--ease),
+    transform 400ms var(--ease);
 }
 .card-glow {
   pointer-events: none;
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 900ms var(--ease);
+  transition: opacity 600ms var(--ease);
   background: radial-gradient(
     130% 80% at 50% 110%,
-    rgb(var(--accent) / 0.22) 0%,
+    rgb(var(--accent) / 0.1) 0%,
     rgb(var(--accent) / 0) 65%
   );
 }
@@ -177,9 +187,9 @@
 }
 @media (hover: hover) {
   .card:hover {
-    border-color: rgb(var(--accent) / 0.5);
-    background-color: #0c2a5e;
-    box-shadow: 0 0 80px -20px rgb(var(--accent) / 0.35);
+    border-color: rgb(var(--accent) / 0.55);
+    box-shadow: 0 8px 16px -4px rgba(5, 26, 59, 0.08), 0 24px 48px -12px rgba(5, 26, 59, 0.16);
+    transform: translateY(-2px);
   }
   .card:hover .card-glow { opacity: 1; }
   .card:hover .card-line { transform: scaleX(1); }
@@ -232,6 +242,10 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: #8a6a0f; /* gold-ink: "ouro" legível (AA ~5:1) sobre claro */
+}
+/* nas âncoras navy, o eyebrow volta ao amarelo vivo */
+.on-dark .eyebrow {
   color: rgb(var(--accent));
 }
 
@@ -242,18 +256,20 @@
   min-height: 44px;
   padding: 0 1.1rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid #cdd6e4;
+  background: #ffffff;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #9fb0c9;
+  color: #5b6a85;
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s var(--ease), color 0.2s var(--ease),
     border-color 0.2s var(--ease);
 }
 .chip:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
+  color: #051a3b;
+  background: #f1f4f9;
+  border-color: #8492a8;
 }
 #f-all:checked ~ .chips label[for='f-all'],
 #f-tex:checked ~ .chips label[for='f-tex'],
@@ -265,7 +281,7 @@
 #f-all:focus-visible ~ .chips label[for='f-all'],
 #f-tex:focus-visible ~ .chips label[for='f-tex'],
 #f-uv:focus-visible ~ .chips label[for='f-uv'] {
-  outline: 2px solid #febf02;
+  outline: 2px solid #051a3b;
   outline-offset: 2px;
 }
 #f-tex:checked ~ .catalog-grid > [data-line='uv'] {
