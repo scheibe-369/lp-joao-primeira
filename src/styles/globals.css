@@ -65,6 +65,7 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --accent: 254 191 2; /* #febf02 */
   --navy: 5 26 59; /* #051a3b */
+  interpolate-size: allow-keywords; /* permite animar height/block-size até 'auto' */
 }
 
 @layer base {
@@ -382,7 +383,7 @@
   border-radius: 2px;
   background-color: #8492a8;
   transform: translate(-50%, -50%);
-  transition: opacity 250ms var(--ease), background-color 250ms var(--ease);
+  transition: transform 320ms var(--ease), background-color 250ms var(--ease);
 }
 .faq-toggle::after {
   transform: translate(-50%, -50%) rotate(90deg); /* barra vertical -> "+" */
@@ -395,7 +396,19 @@
   background-color: #ffffff;
 }
 .faq-item[open] .faq-toggle::after {
-  opacity: 0; /* some a vertical -> vira "-" */
+  transform: translate(-50%, -50%) rotate(0deg); /* gira a vertical p/ horizontal -> "-" fluido */
+}
+/* conteúdo abre/fecha suave (altura + fade); degrada p/ instantâneo em browsers sem ::details-content */
+.faq-item::details-content {
+  overflow: hidden;
+  block-size: 0;
+  opacity: 0;
+  transition: opacity 280ms var(--ease), block-size 320ms var(--ease),
+    content-visibility 320ms allow-discrete;
+}
+.faq-item[open]::details-content {
+  block-size: auto;
+  opacity: 1;
 }
 /* negrito LEVE em trechos-chave da resposta */
 .faq-answer strong {
@@ -406,7 +419,8 @@
   .faq-item,
   .faq-toggle,
   .faq-toggle::before,
-  .faq-toggle::after {
+  .faq-toggle::after,
+  .faq-item::details-content {
     transition: none;
   }
 }
