@@ -25,14 +25,14 @@ const testimonials: Testimonial[] = [];
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <figure
-              class="flex flex-col rounded-xl border border-line bg-surface p-6 shadow-elev-1"
+              class="card-dark on-dark flex flex-col p-6"
               data-reveal
               data-reveal-delay={i * 70}
             >
-              <blockquote class="flex-1 text-ink">“{t.quote}”</blockquote>
+              <blockquote class="flex-1 text-white">“{t.quote}”</blockquote>
               <figcaption class="mt-4 text-sm">
-                <span class="font-semibold text-ink">{t.name}</span>
-                <span class="text-ink-muted"> · {t.city}</span>
+                <span class="font-semibold text-white">{t.name}</span>
+                <span class="text-muted"> · {t.city}</span>
               </figcaption>
             </figure>
           ))}

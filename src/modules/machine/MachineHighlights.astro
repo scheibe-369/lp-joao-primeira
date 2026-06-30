@@ -16,14 +16,14 @@ const { machine } = Astro.props;
       {
         machine.highlights.map((h, i) => (
           <li
-            class="flex items-start gap-3 rounded-xl border border-line bg-surface p-4 shadow-elev-1"
+            class="card-dark on-dark flex items-start gap-3 p-4"
             data-reveal
             data-reveal-delay={i * 60}
           >
             <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink">
               <Icon name="check" size={16} />
             </span>
-            <span class="text-sm leading-relaxed text-ink">{h}</span>
+            <span class="text-sm leading-relaxed text-white">{h}</span>
           </li>
         ))
       }

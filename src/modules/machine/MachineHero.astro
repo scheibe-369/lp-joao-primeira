@@ -87,9 +87,9 @@ const stats = [
         <dl class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {
             stats.map((s) => (
-              <div class="rounded-xl border border-line bg-surface p-3 shadow-elev-1">
-                <dt class="text-[11px] uppercase tracking-eyebrow text-ink-muted">{s.label}</dt>
-                <dd class="mt-1 font-display text-lg leading-none text-ink">{s.value}</dd>
+              <div class="card-dark on-dark p-3">
+                <dt class="text-[11px] uppercase tracking-eyebrow text-muted">{s.label}</dt>
+                <dd class="mt-1 font-display text-lg leading-none text-white">{s.value}</dd>
               </div>
             ))
           }
