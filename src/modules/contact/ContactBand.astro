@@ -16,16 +16,15 @@ const {
 } = Astro.props;
 ---
 
-<section data-contactband class="on-dark relative overflow-hidden bg-navy-deep py-16 sm:py-20">
-  <div class="aura" aria-hidden="true"></div>
-  <Container class="relative text-center">
+<section data-contactband class="bg-surface py-16 sm:py-20">
+  <Container class="text-center">
     <h2
-      class="font-display mx-auto max-w-3xl text-[clamp(2rem,5vw,3.5rem)] leading-none text-white"
+      class="font-display mx-auto max-w-3xl text-[clamp(2rem,5vw,3.5rem)] leading-none text-ink"
       data-reveal
     >
       {title}
     </h2>
-    <p class="mx-auto mt-4 max-w-2xl text-muted" data-reveal data-reveal-delay="80">{subtitle}</p>
+    <p class="mx-auto mt-4 max-w-2xl text-ink-muted" data-reveal data-reveal-delay="80">{subtitle}</p>
     <div class="mt-8 flex justify-center" data-reveal data-reveal-delay="160">
       <WhatsAppButton
         label="Falar no WhatsApp"
