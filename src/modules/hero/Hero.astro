@@ -8,7 +8,7 @@ import Icon from '../../components/ui/Icon.astro';
 const trust = ['Garantia + treinamento', 'Suporte por WhatsApp', 'Insumos abertos'] as const;
 ---
 
-<section class="bg-surface overflow-x-clip">
+<section class="bg-surface">
   <Container
     class="relative grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2 lg:gap-12 lg:py-24"
   >
@@ -62,15 +62,10 @@ const trust = ['Garantia + treinamento', 'Suporte por WhatsApp', 'Insumos aberto
       </ul>
     </div>
 
-    <div class="relative isolate">
-      <!-- luz amarela suave saindo de trás da foto (estática, decorativa) -->
+    <div class="relative">
+      <!-- luz amarela colada na foto (glow do proprio card, nao vaza pra pagina) -->
       <div
-        aria-hidden="true"
-        class="pointer-events-none absolute -inset-6 -z-10 rounded-[3rem] bg-accent/45 blur-3xl sm:-inset-8"
-      >
-      </div>
-      <div
-        class="overflow-hidden rounded-[2rem] border border-line bg-white shadow-[0_30px_70px_-22px_rgba(5,26,59,0.38)] ring-1 ring-black/5"
+        class="overflow-hidden rounded-[2rem] border border-line bg-white shadow-[0_30px_70px_-22px_rgba(5,26,59,0.38),0_0_55px_-6px_rgba(254,191,2,0.55)] ring-1 ring-black/5"
       >
         <Image
           src={heroImg}
